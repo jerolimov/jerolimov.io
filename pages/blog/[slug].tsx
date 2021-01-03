@@ -6,13 +6,10 @@ import hydrate from 'next-mdx-remote/hydrate'
 import renderToString from 'next-mdx-remote/render-to-string'
 import type { MdxRemote } from 'next-mdx-remote/types'
 
+import SyntaxHighlighter from '../../components/SyntaxHighlighter'
+
 const components: MdxRemote.Components = {
-  pre: props => <div {...props} />,
-  code: props => <pre style={{color: 'tomato'}} {...props} />,
-  H3: ({ children, ...props }) => {
-    console.log('children', children)
-    return <h3>{children}</h3>
-  },
+  code: SyntaxHighlighter,
 }
 
 type BlogPostPageProps = {
@@ -22,6 +19,7 @@ type BlogPostPageProps = {
 
 export default function BlogPostPage({ data, source }: BlogPostPageProps) {
   const content = hydrate(source, { components })
+
   return (
     <>
       <Head>
@@ -67,7 +65,7 @@ export const getStaticProps: GetStaticProps<BlogPostPageProps> = async (context)
 
   const { data, content } = matter.read(path.join(contentRoot, `${context.params.slug}.md`));
 
-  const source: MdxRemote.Source = await renderToString(content, { components })
+  const source: MdxRemote.Source = await renderToString(content, { components, scope: data })
 
   return { props: { data, source } }
 }
