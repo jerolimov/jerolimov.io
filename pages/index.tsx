@@ -1,6 +1,8 @@
 import { GetStaticProps, GetStaticPaths, GetServerSideProps } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
+import Footer from '../components/Footer'
+import Header from '../components/Header'
 
 type BlogPost = {
   slug: string,
@@ -20,17 +22,23 @@ export default function IndexPage({ posts }: IndexPageProps) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <h1>My blog</h1>
+      <Header />
 
-      <ul>
-        {posts.map((post) => (
-          <li key={post.slug}>
-            <Link href="/blog/[slug]" as={`/blog/${post.slug}`}>
-              <a>{post.data.title}</a>
-            </Link>
-          </li>
-        ))}
-      </ul>
+      <main>
+        <h1>All posts:</h1>
+
+        <ul>
+          {posts.map((post) => (
+            <li key={post.slug}>
+              <Link href="/blog/[slug]" as={`/blog/${post.slug}`}>
+                <a>{post.data.title}</a>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </main>
+
+      <Footer />
     </>
   )
 }

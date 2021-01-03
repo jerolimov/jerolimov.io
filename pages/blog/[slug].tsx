@@ -7,6 +7,8 @@ import renderToString from 'next-mdx-remote/render-to-string'
 import type { MdxRemote } from 'next-mdx-remote/types'
 
 import SyntaxHighlighter from '../../components/SyntaxHighlighter'
+import Header from '../../components/Header'
+import Footer from '../../components/Footer'
 
 const components: MdxRemote.Components = {
   code: SyntaxHighlighter,
@@ -27,9 +29,11 @@ export default function BlogPostPage({ data, source }: BlogPostPageProps) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div>
+      <Header />
+      <main>
         {content}
-      </div>
+      </main>
+      <Footer />
     </>
   );
 }
