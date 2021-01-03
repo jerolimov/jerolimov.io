@@ -30,8 +30,24 @@ export default function BlogPostPage({ data, source }: BlogPostPageProps) {
       </Head>
 
       <Header />
+
       <main>
-        {content}
+
+        <div className="bg-white">
+          <div className="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
+            <div className="text-center">
+              <h2 className="text-base font-semibold text-indigo-600 tracking-wide uppercase">Blog post</h2>
+              <p className="mt-1 text-4xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl">{data.title}</p>
+              <p className="max-w-xl mt-5 mx-auto text-xl text-gray-500">{data.abstract}</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="relative px-4 sm:px-6 lg:px-8">
+          <div className="text-lg max-w-prose mx-auto">
+            {content}
+          </div>
+        </div>
       </main>
       <Footer />
     </>
@@ -68,6 +84,8 @@ export const getStaticProps: GetStaticProps<BlogPostPageProps> = async (context)
   const contentRoot = path.join(process.cwd(), 'content');
 
   const { data, content } = matter.read(path.join(contentRoot, `${context.params.slug}.md`));
+
+  console.log('data', data, content);
 
   const source: MdxRemote.Source = await renderToString(content, { components, scope: data })
 
