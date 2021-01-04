@@ -3,18 +3,15 @@ import Link from 'next/link'
 const navItems = [
   {
     title: 'About',
-    href: '/blog/[slug]',
-    as: '/blog/about',
+    href: '/blog/about',
   },
   {
     title: 'Imprint',
-    href: '/blog/[slug]',
-    as: '/blog/about',
+    href: '/blog/imprint',
   },
   {
     title: 'Privacy',
-    href: '/blog/[slug]',
-    as: '/blog/privacy',
+    href: '/blog/privacy',
   },
 ]
 
