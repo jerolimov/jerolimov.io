@@ -1,8 +1,28 @@
 import { useMemo } from 'react';
+
 import { PrismLight } from 'react-syntax-highlighter';
+
+import diff from 'react-syntax-highlighter/dist/cjs/languages/prism/diff';
+import java from 'react-syntax-highlighter/dist/cjs/languages/prism/java';
+import javascript from 'react-syntax-highlighter/dist/cjs/languages/prism/javascript';
+import json from 'react-syntax-highlighter/dist/cjs/languages/prism/json';
+import json5 from 'react-syntax-highlighter/dist/cjs/languages/prism/json5';
+import tsx from 'react-syntax-highlighter/dist/cjs/languages/prism/tsx';
+import typescript from 'react-syntax-highlighter/dist/cjs/languages/prism/typescript';
+import yaml from 'react-syntax-highlighter/dist/cjs/languages/prism/yaml';
+
 import style from 'react-syntax-highlighter/dist/cjs/styles/prism/prism';
 // import style from 'react-syntax-highlighter/dist/cjs/styles/prism/synthwave84';
 // import style from 'react-syntax-highlighter/dist/cjs/styles/prism/xonokai';
+
+PrismLight.registerLanguage('diff', diff);
+PrismLight.registerLanguage('java', java);
+PrismLight.registerLanguage('javascript', javascript);
+PrismLight.registerLanguage('json', json);
+PrismLight.registerLanguage('json5', json5);
+PrismLight.registerLanguage('tsx', tsx);
+PrismLight.registerLanguage('typescript', typescript);
+PrismLight.registerLanguage('yaml', yaml);
 
 type SyntaxHighlighterProps = {
   children: string
