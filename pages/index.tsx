@@ -22,17 +22,16 @@ export default function IndexPage({ posts }: IndexPageProps) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="relative bg-indigo-600">
-        <div className="max-w-7xl mx-auto py-3 px-3 sm:px-6 lg:px-8">
-          <div className="pr-16 sm:text-center sm:px-16">
-            <p className="font-medium text-white">
-              Page is work in process! :)
-            </p>
-          </div>
+      <Header />
+
+      <div className="relative max-w-7xl mx-auto">
+        <div className="mt-32 text-4xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl">
+          Hi! My name is Christoph Jerolimov, I'm a Software Engineer working at Red Hat.
+        </div>
+        <div className="mt-8 text-4xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl">
+          This page is <span style={{ background: 'linear-gradient(180deg, rgba(255,255,255,0) 60%, #0af5f4 60%, #0af5f4 90%, rgba(255,255,255,0) 90%)' }}>work in progress.</span> :)
         </div>
       </div>
-
-      <Header />
 
       {/*
       <main>
