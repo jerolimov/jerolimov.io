@@ -24,40 +24,34 @@ export default function IndexPage({ posts }: IndexPageProps) {
 
       <Header />
 
-      <div className="relative max-w-7xl mx-auto">
-        <div className="mt-32 text-4xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl">
-          Hi! My name is Christoph Jerolimov, I'm a Software Engineer working at Red Hat.
-        </div>
-        <div className="mt-8 text-4xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl">
-          This page is <span style={{ background: 'linear-gradient(180deg, rgba(255,255,255,0) 60%, #0af5f4 60%, #0af5f4 90%, rgba(255,255,255,0) 90%)' }}>work in progress.</span> :)
-        </div>
-      </div>
-
-      {/*
       <main>
         <div className="relative max-w-7xl mx-auto">
+          <div className="mt-32 text-4xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl">
+            Hi! My name is Christoph Jerolimov, I'm a Software Engineer working at Red Hat.
+          </div>
+          <div className="mt-8 text-4xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl">
+            This page is <span style={{ background: 'linear-gradient(180deg, rgba(255,255,255,0) 60%, #0af5f4 60%, #0af5f4 90%, rgba(255,255,255,0) 90%)' }}>work in progress.</span> :)
+          </div>
+        </div>
+
+        <div className="relative mt-32 max-w-7xl mx-auto">
           <div className="text-center">
             <h2 className="text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl">
-            All posts
+              All posts
             </h2>
           </div>
         </div>
 
-        <span className="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-green-100 text-green-800">
-          Snippet
-        </span>
-
         <ul>
           {posts.map((post) => (
             <li key={post.slug}>
-              <Link href="/blog/[slug]" as={`/blog/${post.slug}`}>
+              <Link href={`/blog/${encodeURIComponent(post.slug)}`}>
                 <a>{post.data.title}</a>
               </Link>
             </li>
           ))}
         </ul>
       </main>
-      */}
 
       <Footer />
     </>

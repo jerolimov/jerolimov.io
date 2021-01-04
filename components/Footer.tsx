@@ -25,8 +25,8 @@ export default function Footer() {
 
         <nav className="-mx-5 -my-2 flex flex-wrap justify-center" aria-label="Footer">
           {navItems.map(navItem => (
-            <div className="px-5 py-2">
-              <Link href={navItem.href} as={navItem.as}>
+            <div key={navItem.href} className="px-5 py-2">
+              <Link href={navItem.href}>
                 <a className="text-base text-gray-500 hover:text-gray-900">{navItem.title}</a>
               </Link>
             </div>

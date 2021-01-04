@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 const navItems = [
   {
@@ -8,13 +9,13 @@ const navItems = [
   },
   {
     title: 'About',
-    href: '/blog/[slug]',
-    as: '/blog/about',
+    href: '/blog/about',
   },
 ]
 
 export default function Header() {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const router = useRouter()
 
   return (
     <nav className="bg-gray-800">
@@ -61,9 +62,9 @@ export default function Header() {
               <div className="flex space-x-4">
                 {/* Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white"  */}
                 {navItems.map(navItem => (
-                  <Link key={navItem.title} href={navItem.href} as={navItem.as}>
+                  <Link key={navItem.href} href={navItem.href}>
                     <a className={
-                      false ?
+                      navItem.href === router.asPath ?
                       'bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium' :
                       'text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium'
                     }>{navItem.title}</a>
@@ -83,12 +84,16 @@ export default function Header() {
         <div className="px-2 pt-2 pb-3 space-y-1">
           {/* Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" */}
           {navItems.map(navItem => (
-            <Link key={navItem.title} href={navItem.href} as={navItem.as}>
-              <a className={
-                false ?
-                'bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium' :
-                'text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium'
-              }>{navItem.title}</a>
+            <Link key={navItem.href} href={navItem.href}>
+              <a
+                className={
+                  navItem.href === router.asPath ?
+                  'bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium' :
+                  'text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium'
+                }
+              >
+                {navItem.title}
+              </a>
             </Link>
           ))}
         </div>
