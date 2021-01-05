@@ -1,3 +1,4 @@
+
 import { GetStaticProps, GetStaticPaths, GetServerSideProps } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
@@ -14,12 +15,12 @@ const components: MdxRemote.Components = {
   code: SyntaxHighlighter,
 }
 
-type BlogPostPageProps = {
+type NotePageProps = {
   data: Record<string, any>,
   source: MdxRemote.Source,
 }
 
-export default function BlogPostPage({ data, source }: BlogPostPageProps) {
+export default function NotePage({ data, source }: NotePageProps) {
   const content = hydrate(source, { components })
 
   return (
@@ -36,7 +37,7 @@ export default function BlogPostPage({ data, source }: BlogPostPageProps) {
         <div className="bg-white">
           <div className="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
             <div className="text-center">
-              <h2 className="text-base font-semibold text-indigo-600 tracking-wide uppercase">Blog post</h2>
+              <h2 className="text-base font-semibold text-indigo-600 tracking-wide uppercase">Note</h2>
               <p className="mt-1 text-4xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl">{data.title}</p>
               <p className="max-w-xl mt-5 mx-auto text-xl text-gray-500">{data.abstract}</p>
             </div>
@@ -59,7 +60,7 @@ export const getStaticPaths: GetStaticPaths = async (context) => {
   const fs = await import('fs');
   const path = await import('path');
 
-  const contentRoot = path.join(process.cwd(), 'content');
+  const contentRoot = path.join(process.cwd(), 'content', 'notes');
 
   const fileNames = fs.readdirSync(contentRoot).filter(filename => filename.endsWith('.md'));
 
@@ -78,13 +79,13 @@ export const getStaticPaths: GetStaticPaths = async (context) => {
   }
 }
 
-export const getStaticProps: GetStaticProps<BlogPostPageProps> = async (context) => {
+export const getStaticProps: GetStaticProps<NotePageProps> = async (context) => {
   console.log('getStaticProps start')
   const fs = await import('fs');
   const path = await import('path');
   const matter = await import('gray-matter');
 
-  const contentRoot = path.join(process.cwd(), 'content');
+  const contentRoot = path.join(process.cwd(), 'content', 'notes');
 
   const { data, content } = matter.read(path.join(contentRoot, `${context.params.slug}.md`));
 
