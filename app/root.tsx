@@ -2,14 +2,14 @@ import {
   Links,
   LiveReload,
   Meta,
+  MetaFunction,
   Outlet,
   Scripts,
-  ScrollRestoration
+  ScrollRestoration,
 } from "remix";
-import type { MetaFunction } from "remix";
 
 export const meta: MetaFunction = () => {
-  return { title: "New Remix App" };
+  return { title: "jerolimov.io" };
 };
 
 export default function App() {
@@ -21,7 +21,7 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
         <Outlet />
         <ScrollRestoration />
         <Scripts />
