@@ -1,5 +1,28 @@
 # Welcome to jerolimov.io
 
-```tsx
-<WIP />
+```tsx filename:sd {2}
+import { hydrate } from "react-dom";
+import { RemixBrowser } from "remix";
+
+hydrate(<RemixBrowser />, document);
+```
+
+```diff
+import { hydrate } from "react-dom";
+-import { RemixBrowser } from "react";
++import { RemixBrowser } from "remix";
+
+hydrate(<RemixBrowser />, document);
+```
+
+```markdown
+# hallo
+
+asd
+```
+
+```r attr.source='.numberLines startFrom="5"'}
+if (TRUE) {
+  1:10
+}
 ```
