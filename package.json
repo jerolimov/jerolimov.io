@@ -13,6 +13,7 @@
     "postinstall": "remix setup node"
   },
   "dependencies": {
+    "@netlify/functions": "^0.10.0",
     "@remix-run/netlify": "^1.1.3",
     "@remix-run/react": "^1.1.3",
     "@remix-run/serve": "^1.1.3",
